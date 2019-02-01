@@ -14,7 +14,7 @@ class TabLink {
       this.cards = document.querySelectorAll('.card');
     } else {
       // else if `all` is false, only select the cards with matching this.tabData values
-      this.cards = document.querySelectorAll(`.card[data-tab = ${this.tabData}`);
+      this.cards = document.querySelectorAll(`.card[data-tab = "${this.tabData}"]`);
     }
 
 
@@ -32,13 +32,13 @@ class TabLink {
     const tabs = document.querySelectorAll('.tab');
 
     // Iterate through the NodeList removing the .active-tab class from each element
-    tabs.forEach(tab => tab.classList.remove('active-tab'));
+    tabs.forEach(card => card.classList.remove('active-tab'));
 
     // Select all of the elements with the .card class on them
     const cards = document.querySelectorAll('.card');
-
+    console.log(cards)
     // Iterate through the NodeList setting the display style each one to 'none'
-    cards.forEach(card.style.display = 'none');
+    cards.forEach(card => card.style.display = 'none');
 
     // Add a class of ".active-tab" to this.tabElement
     this.tabElement.classList.add('active-tab');
@@ -55,8 +55,8 @@ class TabCard {
   }
   selectCard() {
     // Update the style of this.cardElement to display = "flex"
-    this.cardElement.style.removeProperty('display');
-    this.cardElement.classList.add('flex')
+    // this.cardElement.style.removeProperty('display');
+    this.cardElement.style.display = 'flex';
   }
 
 }
@@ -71,4 +71,7 @@ class TabCard {
 
 */
 let tabs = document.querySelectorAll('.tab');
-tabs.forEach(tab => new TabLink(tab));
+tabs.forEach(tab => {
+
+  return new TabLink(tab);
+});
